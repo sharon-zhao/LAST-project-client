@@ -9,7 +9,7 @@ const CourseIndex = () => (
     <Card className= "card1"style={{ width: '20rem' }}>
       <Card.Img variant="top" src="https://ga-core.s3.amazonaws.com/production/uploads/program/default_image/646/thumb_FullTime_UserExperienceDesignImmersive.jpg" />
       <Card.Body>
-        <Card.Title><Link to='/course1'>User Experience Design Immersive</Link></Card.Title>
+        <Card.Title><Link to='/courseone'>User Experience Design Immersive</Link></Card.Title>
         <Card.Text>
           With 11K+ hires, we’ve placed more grads in high-growth, high-pay tech careers than any other program in the world.
         </Card.Text>

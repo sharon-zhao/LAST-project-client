@@ -8,6 +8,8 @@ import SignUp from '../SignUp/SignUp'
 import SignIn from '../SignIn/SignIn'
 import SignOut from '../SignOut/SignOut'
 import ChangePassword from '../ChangePassword/ChangePassword'
+import CourseIndex from '../Products/CourseIndex'
+import CourseOne from '../Course/CourseOne'
 
 class App extends Component {
   constructor () {
@@ -48,8 +50,9 @@ class App extends Component {
           <Route path='/sign-in' render={() => (
             <SignIn msgAlert={this.msgAlert} setUser={this.setUser} />
           )} />
-          <Route path='/' render={() => (
-          <CourseIndex msgAlert={msgAlert} user={user} setSearch={setSearch}/>
+          <Route exact path='/' component={CourseIndex} />
+          <Route exact path='/courseone' render={() => (
+            <CourseOne msgAlert={this.msgAlert} />
           )} />
           <AuthenticatedRoute user={user} path='/sign-out' render={() => (
             <SignOut msgAlert={this.msgAlert} clearUser={this.clearUser} user={user} />
