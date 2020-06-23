@@ -1,10 +1,26 @@
 import React from 'react'
 import { withRouter } from 'react-router-dom'
 import Button from 'react-bootstrap/Button'
+import axios from 'axios'
+import apiUrl from '../../apiConfig'
 
-const CourseOne = () => {
+const CourseOne = ({ user, msgAlerts }) => {
   const addToCart = (event) => {
-    
+    event.preventDefault()
+    axios({
+      method: 'POST',
+      url: `${apiUrl}/add-course`,
+      headers: {
+        'Authorization': `Token token=${user.token}`
+      },
+      data: {
+        title: 'UX Design Immersive: Boston',
+        price: 200
+      }
+    })
+      .then(res => {
+        console.log(res)
+      })
   }
   return (
     <div>
@@ -18,7 +34,7 @@ const CourseOne = () => {
       <p>
       Distinguish yourself as a designer, compiling a portfolio to showcase solo, group, and client projects to employers.
       </p>
-      <Button onClick={addToCart}>Add To Cart</Button>
+      {user && <Button onClick={addToCart}>Add To Cart</Button>}
     </div>
   )
 }
