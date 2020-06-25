@@ -10,6 +10,9 @@ import SignOut from '../SignOut/SignOut'
 import ChangePassword from '../ChangePassword/ChangePassword'
 import CourseIndex from '../Products/CourseIndex'
 import CourseOne from '../Course/CourseOne'
+import CourseTwo from '../Course/CourseTwo'
+import CourseThree from '../Course/CourseThree'
+import CourseFour from '../Course/CourseFour'
 import MyCart from '../Cart/MyCart'
 import Checkout from '../Checkout/Checkout'
 import StripeCheckoutForm from '../Checkout/CheckoutForm'
@@ -61,6 +64,15 @@ class App extends Component {
           <Route exact path='/' component={CourseIndex} />
           <Route exact path='/courseone' render={() => (
             <CourseOne msgAlert={this.msgAlert} user={user}/>
+          )} />
+          <Route exact path='/coursetwo' render={() => (
+            <CourseTwo msgAlert={this.msgAlert} user={user}/>
+          )} />
+          <Route exact path='/coursethree' render={() => (
+            <CourseThree msgAlert={this.msgAlert} user={user}/>
+          )} />
+          <Route exact path='/coursefour' render={() => (
+            <CourseFour msgAlert={this.msgAlert} user={user}/>
           )} />
           <AuthenticatedRoute exact path='/shopping-cart' user={user} render={() => (
             <MyCart msgAlert={this.msgAlert} user={user}/>

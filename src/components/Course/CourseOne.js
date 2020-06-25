@@ -24,8 +24,13 @@ const CourseOne = ({ user, msgAlerts }) => {
   }
   return (
     <div>
-      <h2 className="course1">UX Design Immersive: Boston</h2>
-      <h4>With 11K+ hires, we’ve placed more grads in high-growth, high-pay tech careers than any other program in the world.</h4>
+      <div className="course1">
+        <h2 className="head">UX Design Immersive: Boston</h2>
+        <p className="ptag">Your best course for career transformation. This full-time data science bootcamp features expert instruction, one-on-one career coaching, and connections to top employers to get you hired.
+
+        This course is also offered in a Remote format.</p>
+      </div>
+      <h4 className="subtitle">With 11K+ hires, we’ve placed more grads in high-growth, high-pay tech careers than any other program in the world.</h4>
       <h5>Learn Universal Skills to Solve Complex User Problems</h5>
       <p>
       Launch a future-proof career designing digital experiences that power revenue, user loyalty, and product success.

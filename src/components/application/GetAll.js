@@ -109,7 +109,7 @@ const ApplicationIndex = (props) => {
               </div>
               <div>
                 <div className="postTextTitle">
-                  {application.story}
+                  Story: {application.story}
                 </div>
               </div>
               <Button variant="primary" onClick={handleShow}>
