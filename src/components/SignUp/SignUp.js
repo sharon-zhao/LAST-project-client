@@ -3,13 +3,12 @@ import { withRouter } from 'react-router-dom'
 // import { createEmptyCart } from '../../api/cart'
 import { signUp, signIn } from '../../api/auth'
 import messages from '../AutoDismissAlert/messages'
-
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 
 class SignUp extends Component {
-  constructor () {
-    super()
+  constructor (props) {
+    super(props)
 
     this.state = {
       email: '',
@@ -24,17 +23,10 @@ class SignUp extends Component {
 
   onSignUp = event => {
     event.preventDefault()
-    // let userId = null
-    // let userToken = null
     const { msgAlert, history, setUser } = this.props
 
     signUp(this.state)
       .then(() => signIn(this.state))
-      .then(data => {
-        // userId = data.data.user._id
-        // userToken = data.data.user.token
-        return data
-      })
       .then(res => {
         const currentUser = res.data.user
         setUser(currentUser)

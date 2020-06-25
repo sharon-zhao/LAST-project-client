@@ -17,7 +17,6 @@ import CourseFive from '../Course/CourseFive'
 import CourseSix from '../Course/CourseSix'
 import MyCart from '../Cart/MyCart'
 import Checkout from '../Checkout/Checkout'
-import StripeCheckoutForm from '../Checkout/CheckoutForm'
 import Application from '../application/Application'
 import ApplicationEdit from '../application/UpdateApp'
 import ApplicationIndex from '../application/GetAll'
@@ -35,6 +34,7 @@ class App extends Component {
   }
 
   setUser = user => this.setState({ user })
+  setCustomer = () => this.setState()
 
   clearUser = () => this.setState({ user: null })
 
@@ -58,10 +58,10 @@ class App extends Component {
         ))}
         <main className="container">
           <Route path='/sign-up' render={() => (
-            <SignUp msgAlert={this.msgAlert} setUser={this.setUser} />
+            <SignUp msgAlert={this.msgAlert} setUser={this.setUser} customer={this.state.customer} setCustomer={this.setCustomer} />
           )} />
           <Route path='/sign-in' render={() => (
-            <SignIn msgAlert={this.msgAlert} setUser={this.setUser} />
+            <SignIn msgAlert={this.msgAlert} setUser={this.setUser} customer={this.state.customer} setCustomer={this.setCustomer} />
           )} />
           <Route exact path='/' component={CourseIndex} />
           <Route exact path='/courseone' render={() => (
@@ -88,11 +88,8 @@ class App extends Component {
           <AuthenticatedRoute path='/checkout' user={user} render={() => (
             <Checkout msgAlert={this.msgAlert} user={user}/>
           )} />
-          <AuthenticatedRoute exact path='/payment' user={user} render={() => (
-            <StripeCheckoutForm msgAlert={this.msgAlert} user={user}/>
-          )} />
           <AuthenticatedRoute user={user} path='/sign-out' render={() => (
-            <SignOut msgAlert={this.msgAlert} clearUser={this.clearUser} user={user} />
+            <SignOut msgAlert={this.msgAlert} clearUser={this.clearUser} user={user} customer={this.state.customer} setCustomer={this.setCustomer} />
           )} />
           <AuthenticatedRoute user={user} path='/change-password' render={() => (
             <ChangePassword msgAlert={this.msgAlert} user={user} />

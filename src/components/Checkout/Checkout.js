@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
-import { getCourse, emptyCart } from '../../api/cart'
+import { getCourse } from '../../api/cart'
 import Modal from 'react-bootstrap/Modal'
-import { Redirect, withRouter } from 'react-router-dom'
+import { Redirect, withRouter, Link } from 'react-router-dom'
 // import Card from 'react-bootstrap/Card'
 // import Accordion from 'react-bootstrap/Accordion'
 // import StripeCheckoutForm from './CheckoutForm'
@@ -19,7 +19,7 @@ const Checkout = (props) => {
       })
       .then(response => {
         setBuyHistory(response)
-        emptyCart(props.user)
+        // emptyCart(props.user)
       })
   }
   // if (buyHistory.length > 0) {
@@ -141,9 +141,10 @@ const Checkout = (props) => {
             <Button variant="secondary" onClick={handleClose}>
               Close
             </Button>
-            <Button variant="primary" onClick={handleClose}>
+            {/* <Button variant="primary" onClick={handleClose}>
               Save Changes
-            </Button>
+            </Button> */}
+            <Link to={'/'}><Button onClick={handleClose} className="moveRight">Save</Button></Link>
           </Modal.Footer>
         </Modal>
       </Form>
