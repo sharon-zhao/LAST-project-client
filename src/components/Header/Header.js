@@ -13,10 +13,6 @@ const authenticatedOptions = (
         <Dropdown.Item href="#sign-out">Sign Out</Dropdown.Item>
       </Dropdown.Menu>
     </Dropdown>
-
-    {/* <Nav.Link href="#change-password">Change Password</Nav.Link>
-    <Nav.Link href="#sign-out">Sign Out</Nav.Link>
-    <Nav.Link href="#allapplications">My Application</Nav.Link> */}
   </Fragment>
 )
 
@@ -36,7 +32,9 @@ const alwaysOptions = (
 const Header = ({ user }) => (
   <Navbar className="newnav" bg="primary" variant="dark" expand="md">
     <Navbar.Brand href="#">
-      GA Boston
+      <img className="Logo" src='https://toddsharon.s3.amazonaws.com/0e7277c3c0e27775d429d61cdf034f11' alt="Cartoon-ish Badger Logo"/>
+    </Navbar.Brand>
+    <Navbar.Brand href="#">
     </Navbar.Brand>
     <Navbar.Toggle aria-controls="basic-navbar-nav" />
     <Navbar.Collapse id="basic-navbar-nav">
