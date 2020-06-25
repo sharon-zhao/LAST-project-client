@@ -28,8 +28,12 @@ const ApplicationIndex = (props) => {
       }
     })
       .then(res => {
+        const resdata = res.data.results
+        return resdata.filter(result => result.owner === props.user._id)
+      })
+      .then(response => {
         // console.log(res.data.posts)
-        setApplications(res.data.results)
+        setApplications(response)
       })
       // .catch(console.error)
   }, [])
@@ -64,18 +68,18 @@ const ApplicationIndex = (props) => {
   }
 
   const handleChange = event => {
+    event.persist()
     const updatedField = { [event.target.name]: event.target.value }
 
-    const editedApplication = Object.assign(appl, updatedField)
-
+    const editedApplication = Object.assign({}, appl, updatedField)
     setAppl(editedApplication)
   }
 
-  const handleSubmit = event => {
+  const handleSubmit = (event, application) => {
     event.preventDefault()
 
     axios({
-      url: `${apiUrl}/applications/${props.appId}`,
+      url: `${apiUrl}/applications/${application.id}`,
       method: 'PATCH',
       headers: {
         'Authorization': `Token token=${props.user.token}`
@@ -117,51 +121,51 @@ const ApplicationIndex = (props) => {
               </Button>
               <Button onClick={() => deleteApplication(event, application)} className="button">Delete</Button>
             </Card.Body>
+            <Modal show={show} onHide={handleClose}>
+              <Modal.Header closeButton>
+                <Modal.Title>Modal heading</Modal.Title>
+              </Modal.Header>
+              <Modal.Body>
+                <Form onSubmit={() => handleSubmit(event, application)}>
+                  <Form.Group controlId="formBasicEmail">
+                    <Form.Label>Your Name</Form.Label>
+                    <Form.Control type="text" placeholder="Your Name" value={appl.name} name="name" onChange={handleChange}/>
+                  </Form.Group>
+
+                  <Form.Group controlId="formBasicEmail">
+                    <Form.Label>Your Backgroud</Form.Label>
+                    <Form.Control type="text" placeholder="Your Story" value={appl.story} name="story" onChange={handleChange}/>
+                  </Form.Group>
+
+                  <Form.Group controlId="formBasicEmail">
+                    <Form.Label>Email address</Form.Label>
+                    <Form.Control type="email" placeholder="Enter email" value={appl.email} name="email" onChange={handleChange}/>
+                  </Form.Group>
+
+                  <Form.Group controlId="formBasicPassword">
+                    <Form.Label>Phone Number</Form.Label>
+                    <Form.Control type="number" placeholder="Phone Number" value={appl.phone} name="phone" onChange={handleChange}/>
+                    <Form.Text className="text-muted">
+                      We never share your phone number with anyone else.
+                    </Form.Text>
+                  </Form.Group>
+                  <Button variant="primary" type="submit">
+                    Submit
+                  </Button>
+                </Form>
+              </Modal.Body>
+              <Modal.Footer>
+                <Button variant="secondary" onClick={handleClose}>
+                  Close
+                </Button>
+                <Button variant="primary" onClick={handleClose}>
+                  Save
+                </Button>
+              </Modal.Footer>
+            </Modal>
           </Card>
         ))}
       </div>
-      <Modal show={show} onHide={handleClose}>
-        <Modal.Header closeButton>
-          <Modal.Title>Modal heading</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-          <Form onSubmit={handleSubmit}>
-            <Form.Group controlId="formBasicEmail">
-              <Form.Label>Your Name</Form.Label>
-              <Form.Control type="text" placeholder="Your Name" value={appl.name} name="name" onChange={handleChange}/>
-            </Form.Group>
-
-            <Form.Group controlId="formBasicEmail">
-              <Form.Label>Your Backgroud</Form.Label>
-              <Form.Control type="text" placeholder="Your Story" value={appl.story} name="story" onChange={handleChange}/>
-            </Form.Group>
-
-            <Form.Group controlId="formBasicEmail">
-              <Form.Label>Email address</Form.Label>
-              <Form.Control type="email" placeholder="Enter email" value={appl.email} name="email" onChange={handleChange}/>
-            </Form.Group>
-
-            <Form.Group controlId="formBasicPassword">
-              <Form.Label>Phone Number</Form.Label>
-              <Form.Control type="number" placeholder="Phone Number" value={appl.phone} name="phone" onChange={handleChange}/>
-              <Form.Text className="text-muted">
-                We never share your phone number with anyone else.
-              </Form.Text>
-            </Form.Group>
-            <Button variant="primary" type="submit">
-              Submit
-            </Button>
-          </Form>
-        </Modal.Body>
-        <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
-            Close
-          </Button>
-          <Button variant="primary" onClick={handleClose}>
-            Save
-          </Button>
-        </Modal.Footer>
-      </Modal>
     </div>
   )
 }
