@@ -35,5 +35,9 @@ Resources:
   2. Course
   3. Application
 
+## Page Demo
+https://user-images.githubusercontent.com/62820094/85748705-4380ea00-b6d6-11ea-81af-4a85a4cec42a.png
+https://user-images.githubusercontent.com/62820094/85748855-5b586e00-b6d6-11ea-99a4-0f5bd2472519.png
+
 ### Unsolved Problems/Future Updates
 - Combine the same content in the cart to show as number increase.
