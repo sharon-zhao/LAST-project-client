@@ -4,14 +4,14 @@ import Button from 'react-bootstrap/Button'
 import axios from 'axios'
 import apiUrl from '../../apiConfig'
 
-const CourseTwo = ({ user, msgAlerts }) => {
+const CourseTwo = (props) => {
   const addToCart = (event) => {
     event.preventDefault()
     axios({
       method: 'POST',
       url: `${apiUrl}/add-course`,
       headers: {
-        'Authorization': `Token token=${user.token}`
+        'Authorization': `Token token=${props.user.token}`
       },
       data: {
         title: 'Visual Design Course: Boston',
@@ -20,6 +20,18 @@ const CourseTwo = ({ user, msgAlerts }) => {
     })
       .then(res => {
         return res
+      })
+      .then(() => props.msgAlert({
+        heading: 'Success',
+        message: 'Add to Cart successfully!',
+        variant: 'success'
+      }))
+      .catch(error => {
+        props.msgAlert({
+          heading: 'Fail' + error.message,
+          message: 'Add to Cart Failed',
+          variant: 'danger'
+        })
       })
   }
   return (
@@ -37,8 +49,8 @@ const CourseTwo = ({ user, msgAlerts }) => {
       <p>
       More than 45% of our part-time students receive tuition reimbursement from their companies — you could, too. We can send you an employer sponsorship package to show your manager the advantages of learning with GA.
       </p>
-      {user && <Button onClick={addToCart} >Add To Cart</Button>}
-      {user && <Link to={'/applications'}><Button className="moveRight">Apply</Button></Link>}
+      {props.user && <Button onClick={addToCart} >Add To Cart</Button>}
+      {props.user && <Link to={'/applications'}><Button className="moveRight">Apply</Button></Link>}
     </div>
   )
 }

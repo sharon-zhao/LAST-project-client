@@ -13,6 +13,8 @@ import CourseOne from '../Course/CourseOne'
 import CourseTwo from '../Course/CourseTwo'
 import CourseThree from '../Course/CourseThree'
 import CourseFour from '../Course/CourseFour'
+import CourseFive from '../Course/CourseFive'
+import CourseSix from '../Course/CourseSix'
 import MyCart from '../Cart/MyCart'
 import Checkout from '../Checkout/Checkout'
 import StripeCheckoutForm from '../Checkout/CheckoutForm'
@@ -74,6 +76,12 @@ class App extends Component {
           <Route exact path='/coursefour' render={() => (
             <CourseFour msgAlert={this.msgAlert} user={user}/>
           )} />
+          <Route exact path='/coursefive' render={() => (
+            <CourseFive msgAlert={this.msgAlert} user={user}/>
+          )} />
+          <Route exact path='/coursesix' render={() => (
+            <CourseSix msgAlert={this.msgAlert} user={user}/>
+          )} />
           <AuthenticatedRoute exact path='/shopping-cart' user={user} render={() => (
             <MyCart msgAlert={this.msgAlert} user={user}/>
           )} />
@@ -93,7 +101,7 @@ class App extends Component {
             <ApplicationIndex msgAlert={this.msgAlert} user={user}/>
           )} />
           <AuthenticatedRoute path='/applications' user={user} render={() => (
-            <Application msgAlert={this.msgAlerts} user={user}/>
+            <Application msgAlert={this.msgAlert} user={user}/>
           )} />
           {/* <AuthenticatedRoute path='/applications/:id' user={user} render={({ match }) => (
               const appId = match.params.id
@@ -102,7 +110,7 @@ class App extends Component {
               )
           )} /> */}
           <AuthenticatedRoute path='/update/:id' user={user} render={({ match }) => (
-            <ApplicationEdit msgAlert={this.msgAlerts} user={user}/>
+            <ApplicationEdit msgAlert={this.msgAlert} user={user}/>
           )} />
         </main>
       </Fragment>

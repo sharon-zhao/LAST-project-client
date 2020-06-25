@@ -1,13 +1,22 @@
 import React, { Fragment } from 'react'
-import Nav from 'react-bootstrap/Nav'
-import Navbar from 'react-bootstrap/Navbar'
+import { Nav, Navbar, Button, Dropdown, ButtonGroup } from 'react-bootstrap'
 
 const authenticatedOptions = (
   <Fragment>
-    <Nav.Link href="#change-password">Change Password</Nav.Link>
-    <Nav.Link href="#sign-out">Sign Out</Nav.Link>
     <Nav.Link href="#shopping-cart">My Cart</Nav.Link>
-    <Nav.Link href="#allapplications">My Application</Nav.Link>
+    <Dropdown as={ButtonGroup}>
+      <Button variant="success">User Action</Button>
+      <Dropdown.Toggle split variant="success" id="dropdown-split-basic" />
+      <Dropdown.Menu>
+        <Dropdown.Item href="#allapplications">My Application</Dropdown.Item>
+        <Dropdown.Item href="#change-password">Change Password</Dropdown.Item>
+        <Dropdown.Item href="#sign-out">Sign Out</Dropdown.Item>
+      </Dropdown.Menu>
+    </Dropdown>
+
+    {/* <Nav.Link href="#change-password">Change Password</Nav.Link>
+    <Nav.Link href="#sign-out">Sign Out</Nav.Link>
+    <Nav.Link href="#allapplications">My Application</Nav.Link> */}
   </Fragment>
 )
 
@@ -25,9 +34,9 @@ const alwaysOptions = (
 )
 
 const Header = ({ user }) => (
-  <Navbar bg="primary" variant="dark" expand="md">
+  <Navbar className="newnav" bg="primary" variant="dark" expand="md">
     <Navbar.Brand href="#">
-      react-auth-template
+      GA Boston
     </Navbar.Brand>
     <Navbar.Toggle aria-controls="basic-navbar-nav" />
     <Navbar.Collapse id="basic-navbar-nav">

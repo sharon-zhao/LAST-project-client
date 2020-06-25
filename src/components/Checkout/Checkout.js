@@ -3,7 +3,7 @@ import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 import { getCourse, emptyCart } from '../../api/cart'
 import Modal from 'react-bootstrap/Modal'
-import { Redirect } from 'react-router-dom'
+import { Redirect, withRouter } from 'react-router-dom'
 // import Card from 'react-bootstrap/Card'
 // import Accordion from 'react-bootstrap/Accordion'
 // import StripeCheckoutForm from './CheckoutForm'
@@ -30,8 +30,14 @@ const Checkout = (props) => {
   //     msgAlert: { msgAlert: props.msgAlert }
   //   }} />
   // }
+
   const [show, setShow] = useState(false)
-  const handleClose = () => setShow(false)
+  const handleClose = () => {
+    setShow(false)
+    if (buyHistory.length > 0) {
+      return <Redirect to={{ pathname: '/' }} />
+    }
+  }
   const handleShow = () => {
     setShow(true)
     return <Redirect to={{ pathname: '/' }} />
@@ -145,4 +151,4 @@ const Checkout = (props) => {
   )
 }
 
-export default Checkout
+export default withRouter(Checkout)

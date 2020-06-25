@@ -37,7 +37,18 @@ const Application = (props) => {
       .then(res => {
         setCreatedId(res.data.result._id)
       })
-      .catch(console.error)
+      .then(() => props.msgAlert({
+        heading: 'Success',
+        message: 'Create Application Successfully!',
+        variant: 'success'
+      }))
+      .catch(error => {
+        props.msgAlert({
+          heading: 'Fail' + error.message,
+          message: 'Create Application Failed',
+          variant: 'danger'
+        })
+      })
   }
 
   if (createdId) {

@@ -37,7 +37,7 @@ const CourseOne = (props) => {
   return (
     <div>
       <div className="course1">
-        <h2 className="head">UX Design Immersive: Boston</h2>
+        <h2 className="head">What The HTML?!</h2>
         <p className="ptag">Your best course for career transformation. This full-time data science bootcamp features expert instruction, one-on-one career coaching, and connections to top employers to get you hired.
 
         This course is also offered in a Remote format.</p>

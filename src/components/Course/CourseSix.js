@@ -4,7 +4,7 @@ import Button from 'react-bootstrap/Button'
 import axios from 'axios'
 import apiUrl from '../../apiConfig'
 
-const CourseOne = (props) => {
+const CourseSix = (props) => {
   const addToCart = (event) => {
     event.preventDefault()
     axios({
@@ -37,7 +37,7 @@ const CourseOne = (props) => {
   return (
     <div>
       <div className="course1">
-        <h2 className="head">UX Design Immersive: Boston</h2>
+        <h2 className="head">Digital Marketing</h2>
         <p className="ptag">Your best course for career transformation. This full-time data science bootcamp features expert instruction, one-on-one career coaching, and connections to top employers to get you hired.
 
         This course is also offered in a Remote format.</p>
@@ -57,4 +57,4 @@ const CourseOne = (props) => {
   )
 }
 
-export default withRouter(CourseOne)
+export default withRouter(CourseSix)

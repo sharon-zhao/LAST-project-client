@@ -1,12 +1,11 @@
 import Card from 'react-bootstrap/Card'
-import Button from 'react-bootstrap/Button'
 import { Link, withRouter } from 'react-router-dom'
 import React from 'react'
 // import Course1 from '../EachCourse/Course1'
 
 const CourseIndex = () => (
-  <div>
-    <Card className= "card1"style={{ width: '20rem' }}>
+  <div className="cardcontainer">
+    <Card className= "card"style={{ width: '20rem' }}>
       <Card.Img variant="top" src="https://ga-core.s3.amazonaws.com/production/uploads/program/default_image/646/thumb_FullTime_UserExperienceDesignImmersive.jpg" />
       <Card.Body>
         <Card.Title><Link to='/courseone'>User Experience Design Immersive</Link></Card.Title>
@@ -15,7 +14,7 @@ const CourseIndex = () => (
         </Card.Text>
       </Card.Body>
     </Card>
-    <Card className= "card2" style={{ width: '20rem' }}>
+    <Card className= "card" style={{ width: '20rem' }}>
       <Card.Img variant="top" src="https://ga-core.s3.amazonaws.com/production/uploads/program/default_image/11342/thumb_FullTime_SoftwareEngineeringImmersive.jpg" />
       <Card.Body>
         <Card.Title><Link to='/coursetwo'>Software Engineering Immersive </Link></Card.Title>
@@ -24,7 +23,7 @@ const CourseIndex = () => (
         </Card.Text>
       </Card.Body>
     </Card>
-    <Card className= "card3" style={{ width: '20rem' }}>
+    <Card className= "card" style={{ width: '20rem' }}>
       <Card.Img variant="top" src="https://ga-core.s3.amazonaws.com/production/uploads/program/default_image/9192/thumb_101_Intro_ProductManagement.jpg" />
       <Card.Body>
         <Card.Title><Link to='/coursethree'>Free Intro to Product Management className</Link></Card.Title>
@@ -33,7 +32,7 @@ const CourseIndex = () => (
         </Card.Text>
       </Card.Body>
     </Card>
-    <Card className= "card4" style={{ width: '20rem' }}>
+    <Card className= "card" style={{ width: '20rem' }}>
       <Card.Img variant="top" src="https://ga-core.s3.amazonaws.com/production/uploads/program/default_image/13832/thumb_Business_Make_Heart_Hand_Tray_Suit.jpg" />
       <Card.Body>
         <Card.Title><Link to='/coursefour'>Design Your Life, Design Your Quarantine: You Must Be Dreaming</Link></Card.Title>
@@ -42,24 +41,22 @@ const CourseIndex = () => (
         </Card.Text>
       </Card.Body>
     </Card>
-    <Card className= "card5" style={{ width: '20rem' }}>
+    <Card className= "card" style={{ width: '20rem' }}>
       <Card.Img variant="top" src="https://ga-core.s3.amazonaws.com/production/uploads/program/default_image/14058/thumb_Tech_AI-VR-woman-headset.jpg" />
       <Card.Body>
-        <Card.Title>What The HTML?!</Card.Title>
+        <Card.Title><Link to='/coursefive'>What The HTML?!</Link></Card.Title>
         <Card.Text>
           Join us to hear software engineering experts share their insights on the powver of failing & how learning to fail can transform any professional journey.
         </Card.Text>
-        <Button variant="primary">View Details</Button>
       </Card.Body>
     </Card>
-    <Card className= "card6" style={{ width: '20rem' }}>
+    <Card className= "card" style={{ width: '20rem' }}>
       <Card.Img variant="top" src="https://ga-core.s3.amazonaws.com/production/uploads/program/default_image/669/thumb_PartTime_DigitalMarketing.jpg" />
       <Card.Body>
-        <Card.Title>Digital Marketing</Card.Title>
+        <Card.Title><Link to='/coursesix'>Digital Marketing</Link></Card.Title>
         <Card.Text>
           Gain indispensable digital marketing skills in this 10-week evening or 1-week accelerated course, on campus or online.
         </Card.Text>
-        <Button variant="primary">View Details</Button>
       </Card.Body>
     </Card>
   </div>
