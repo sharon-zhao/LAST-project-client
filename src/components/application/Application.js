@@ -64,13 +64,13 @@ const Application = (props) => {
         </Form.Group>
 
         <Form.Group controlId="formBasicEmail">
-          <Form.Label>Your Backgroud</Form.Label>
+          <Form.Label>Your Background</Form.Label>
           <Form.Control type="text" placeholder="Your Story" value={application.story} name="story" onChange={handleChange}/>
         </Form.Group>
 
         <Form.Group controlId="formBasicEmail">
-          <Form.Label>Email address</Form.Label>
-          <Form.Control type="email" placeholder="Enter email" value={application.email} name="email" onChange={handleChange}/>
+          <Form.Label>Email Address</Form.Label>
+          <Form.Control type="email" placeholder="Enter Email" value={application.email} name="email" onChange={handleChange}/>
         </Form.Group>
 
         <Form.Group controlId="formBasicPassword">

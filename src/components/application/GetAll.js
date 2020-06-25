@@ -43,7 +43,7 @@ const ApplicationIndex = (props) => {
   }
 
   if (applications.length === 0) {
-    return <p>There are no posts yet!!! Make one!</p>
+    return <p>There are no applications yet!!! Make one!</p>
   }
 
   const deleteApplication = (event, application) => {
@@ -64,7 +64,14 @@ const ApplicationIndex = (props) => {
           }
         })
       })
-      .then()
+      .then(res => {
+        const resdata = res.data.results
+        return resdata.filter(result => result.owner === props.user._id)
+      })
+      .then(response => {
+        // console.log(res.data.posts)
+        setApplications(response)
+      })
   }
 
   const handleChange = event => {
@@ -133,13 +140,13 @@ const ApplicationIndex = (props) => {
                   </Form.Group>
 
                   <Form.Group controlId="formBasicEmail">
-                    <Form.Label>Your Backgroud</Form.Label>
+                    <Form.Label>Your Background</Form.Label>
                     <Form.Control type="text" placeholder="Your Story" value={appl.story} name="story" onChange={handleChange}/>
                   </Form.Group>
 
                   <Form.Group controlId="formBasicEmail">
-                    <Form.Label>Email address</Form.Label>
-                    <Form.Control type="email" placeholder="Enter email" value={appl.email} name="email" onChange={handleChange}/>
+                    <Form.Label>Email Address</Form.Label>
+                    <Form.Control type="email" placeholder="Enter Email" value={appl.email} name="email" onChange={handleChange}/>
                   </Form.Group>
 
                   <Form.Group controlId="formBasicPassword">
