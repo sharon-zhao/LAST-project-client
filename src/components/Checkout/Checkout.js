@@ -1,17 +1,45 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
+import { getCourse, emptyCart } from '../../api/cart'
+import Modal from 'react-bootstrap/Modal'
+import { Redirect } from 'react-router-dom'
+// import Card from 'react-bootstrap/Card'
 // import Accordion from 'react-bootstrap/Accordion'
-// import StipeCheckoutForm from './CheckoutForm'
+// import StripeCheckoutForm from './CheckoutForm'
 
-const Checkout = ({ user, msgAlert, customer }) => {
-  // const onShipSubmit = event => {
-  //   event.preventDefault()
+const Checkout = (props) => {
+  const [buyHistory, setBuyHistory] = useState([])
+  const moveToHistory = event => {
+    event.preventDefault()
+    getCourse(props.user)
+      .then(res => {
+        const resdata = res.data.carts
+        return resdata.filter(cart => cart.owner._id === props.user._id)
+      })
+      .then(response => {
+        setBuyHistory(response)
+        emptyCart(props.user)
+      })
+  }
+  // if (buyHistory.length > 0) {
+  //   return <Redirect to={{
+  //     pathname: '/payment',
+  //     state: { buyHistory: buyHistory },
+  //     user: { user: props.user },
+  //     msgAlert: { msgAlert: props.msgAlert }
+  //   }} />
   // }
+  const [show, setShow] = useState(false)
+  const handleClose = () => setShow(false)
+  const handleShow = () => {
+    setShow(true)
+    return <Redirect to={{ pathname: '/' }} />
+  }
 
   return (
     <div>
-      <Form>
+      <Form onSubmit={moveToHistory}>
         <Form.Group controlId="exampleForm.ControlInput1">
           <Form.Label>Name</Form.Label>
           <Form.Control type="text" placeholder="name" />
@@ -86,12 +114,33 @@ const Checkout = ({ user, msgAlert, customer }) => {
         </Form.Group>
         <Form.Group controlId="exampleForm.ControlTextarea1">
           <Form.Label>Phone Number</Form.Label>
-          <Form.Control as="textarea" />
+          <Form.Control type="number" placeholder="000-000-0000"/>
         </Form.Group>
+        {/* <Button type="submit" className="moveRight">Submit</Button> */}
+        <Button type="submit" variant="primary" onClick={handleShow}>
+          Submit
+        </Button>
+
+        <Modal show={show} onHide={handleClose}>
+          <Modal.Header closeButton>
+            <Modal.Title>Products You Purchase</Modal.Title>
+          </Modal.Header>
+          {buyHistory.map(ele => (
+            <div key={ele._id}>
+              <Modal.Body>Course Name: {ele.title}</Modal.Body>
+              <Modal.Body>Course Price: ${ele.price}</Modal.Body>
+            </div>
+          ))}
+          <Modal.Footer>
+            <Button variant="secondary" onClick={handleClose}>
+              Close
+            </Button>
+            <Button variant="primary" onClick={handleClose}>
+              Save Changes
+            </Button>
+          </Modal.Footer>
+        </Modal>
       </Form>
-      <Button variant="primary" size="lg" block>
-        Submit
-      </Button>
     </div>
   )
 }

@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import { withRouter } from 'react-router-dom'
-import { createEmptyCart } from '../../api/cart'
-import { createCustomer, updateCustomer } from '../../api/stripe'
+// import { createEmptyCart } from '../../api/cart'
 import { signUp, signIn } from '../../api/auth'
 import messages from '../AutoDismissAlert/messages'
 
@@ -25,32 +24,21 @@ class SignUp extends Component {
 
   onSignUp = event => {
     event.preventDefault()
-    let userId = null
-    let userToken = null
+    // let userId = null
+    // let userToken = null
     const { msgAlert, history, setUser } = this.props
 
     signUp(this.state)
       .then(() => signIn(this.state))
       .then(data => {
-        userId = data.data.user._id
-        userToken = data.data.user.token
+        // userId = data.data.user._id
+        // userToken = data.data.user.token
         return data
       })
       .then(res => {
         const currentUser = res.data.user
         setUser(currentUser)
         return currentUser
-      })
-      .then(currentUser => {
-        createEmptyCart(currentUser)
-      })
-      .then(() => createCustomer(this.state.email))
-      .then(data => {
-        updateCustomer(data.data.customer.id, userId, userToken)
-        return data.data.customer.id
-      })
-      .then(id => {
-        this.props.setCustomer(id)
       })
       .then(() => msgAlert({
         heading: 'Sign Up Success',

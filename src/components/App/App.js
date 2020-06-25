@@ -12,6 +12,11 @@ import CourseIndex from '../Products/CourseIndex'
 import CourseOne from '../Course/CourseOne'
 import MyCart from '../Cart/MyCart'
 import Checkout from '../Checkout/Checkout'
+import StripeCheckoutForm from '../Checkout/CheckoutForm'
+import Application from '../application/Application'
+import ApplicationEdit from '../application/UpdateApp'
+import ApplicationIndex from '../application/GetAll'
+// import OneApplication from '../application/GetOne'
 
 class App extends Component {
   constructor () {
@@ -58,16 +63,34 @@ class App extends Component {
             <CourseOne msgAlert={this.msgAlert} user={user}/>
           )} />
           <AuthenticatedRoute exact path='/shopping-cart' user={user} render={() => (
-            <MyCart msgAlert={msgAlerts} user={user}/>
+            <MyCart msgAlert={this.msgAlert} user={user}/>
           )} />
-          <AuthenticatedRoute exact path='/checkout' user={user} render={() => (
-            <Checkout msgAlert={msgAlerts} user={user}/>
+          <AuthenticatedRoute path='/checkout' user={user} render={() => (
+            <Checkout msgAlert={this.msgAlert} user={user}/>
+          )} />
+          <AuthenticatedRoute exact path='/payment' user={user} render={() => (
+            <StripeCheckoutForm msgAlert={this.msgAlert} user={user}/>
           )} />
           <AuthenticatedRoute user={user} path='/sign-out' render={() => (
             <SignOut msgAlert={this.msgAlert} clearUser={this.clearUser} user={user} />
           )} />
           <AuthenticatedRoute user={user} path='/change-password' render={() => (
             <ChangePassword msgAlert={this.msgAlert} user={user} />
+          )} />
+          <AuthenticatedRoute path='/allapplications' user={user} render={() => (
+            <ApplicationIndex msgAlert={this.msgAlert} user={user}/>
+          )} />
+          <AuthenticatedRoute path='/applications' user={user} render={() => (
+            <Application msgAlert={this.msgAlerts} user={user}/>
+          )} />
+          {/* <AuthenticatedRoute path='/applications/:id' user={user} render={({ match }) => (
+              const appId = match.params.id
+              return (
+                <OneApplication addId={ appId } msgAlert={msgAlerts} user={user}/>
+              )
+          )} /> */}
+          <AuthenticatedRoute path='/update/:id' user={user} render={({ match }) => (
+            <ApplicationEdit msgAlert={this.msgAlerts} user={user}/>
           )} />
         </main>
       </Fragment>

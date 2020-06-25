@@ -1,5 +1,5 @@
 import React from 'react'
-import { withRouter } from 'react-router-dom'
+import { withRouter, Link } from 'react-router-dom'
 import Button from 'react-bootstrap/Button'
 import axios from 'axios'
 import apiUrl from '../../apiConfig'
@@ -19,7 +19,7 @@ const CourseOne = ({ user, msgAlerts }) => {
       }
     })
       .then(res => {
-        console.log(res)
+        return res
       })
   }
   return (
@@ -34,7 +34,8 @@ const CourseOne = ({ user, msgAlerts }) => {
       <p>
       Distinguish yourself as a designer, compiling a portfolio to showcase solo, group, and client projects to employers.
       </p>
-      {user && <Button onClick={addToCart}>Add To Cart</Button>}
+      {user && <Button onClick={addToCart} >Add To Cart</Button>}
+      {user && <Link to={'/applications'}><Button className="moveRight">Apply</Button></Link>}
     </div>
   )
 }

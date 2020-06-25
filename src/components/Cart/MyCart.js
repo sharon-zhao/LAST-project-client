@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom'
 // import './postIndexShow.scss'
 
 const MyCart = (props) => {
-  const [carts, setCarts] = useState(null)
+  const [carts, setCarts] = useState([])
 
   const totalCost = () => {
     let sum = 0

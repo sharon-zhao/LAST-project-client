@@ -1,6 +1,15 @@
 import apiUrl from '../apiConfig'
 import axios from 'axios'
 
+export const emptyCart = user => {
+  return axios({
+    url: `${apiUrl}/delete-cart`,
+    method: 'DELETE',
+    headers: {
+      'Authorization': `Bearer ${user.token}`
+    }
+  })
+}
 export const createCourse = user => {
   return axios({
     url: apiUrl + 'add-cart',
@@ -16,7 +25,7 @@ export const createCourse = user => {
 
 export const getCourse = user => {
   return axios({
-    url: apiUrl + 'my-course',
+    url: `${apiUrl}/my-course`,
     method: 'GET',
     headers: {
       'Authorization': `Bearer ${user.token}`
@@ -27,7 +36,7 @@ export const getCourse = user => {
 export const createEmptyCart = user => {
   return axios({
     url: apiUrl + '/shopping-cart',
-    method: 'PATCH',
+    method: 'POST',
     data: {
       'cart': {
         'carts': [],
