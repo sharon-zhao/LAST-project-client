@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
-import { getCourse } from '../../api/cart'
+import { getCourse, emptyCart } from '../../api/cart'
 import Modal from 'react-bootstrap/Modal'
 import { Redirect, withRouter, Link } from 'react-router-dom'
 // import Card from 'react-bootstrap/Card'
