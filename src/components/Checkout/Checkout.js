@@ -19,7 +19,7 @@ const Checkout = (props) => {
       })
       .then(response => {
         setBuyHistory(response)
-        // emptyCart(props.user)
+        emptyCart(props.user)
       })
   }
   // if (buyHistory.length > 0) {
