@@ -88,6 +88,7 @@ const MyCart = (props) => {
               <div className="textBox">
                 <p className="postInfo">Added on {cart.createdAt ? cart.createdAt.split('T')[0] : 'DATE'}</p>
               </div>
+              <img variant="top" src={cart.imageUrl} />
               <div>
                 <div className="postTextTitle">
                   Course Name: {cart.title}
