@@ -14,6 +14,7 @@ const CourseOne = (props) => {
         'Authorization': `Token token=${props.user.token}`
       },
       data: {
+        imageUrl: 'https://ga-core.s3.amazonaws.com/production/uploads/program/default_image/646/thumb_FullTime_UserExperienceDesignImmersive.jpg',
         title: 'UX Design Immersive: Boston',
         price: 200
       }

@@ -14,6 +14,7 @@ const CourseTwo = (props) => {
         'Authorization': `Token token=${props.user.token}`
       },
       data: {
+        imageUrl: 'https://ga-core.s3.amazonaws.com/production/uploads/program/default_image/11342/thumb_FullTime_SoftwareEngineeringImmersive.jpg',
         title: 'Software Engineering Immersive: Boston',
         price: 1980
       }

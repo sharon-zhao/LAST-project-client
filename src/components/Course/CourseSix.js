@@ -14,6 +14,7 @@ const CourseSix = (props) => {
         'Authorization': `Token token=${props.user.token}`
       },
       data: {
+        imageUrl: 'https://ga-core.s3.amazonaws.com/production/uploads/program/default_image/669/thumb_PartTime_DigitalMarketing.jpg',
         title: 'UX Design Immersive: Boston',
         price: 200
       }

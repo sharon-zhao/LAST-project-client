@@ -14,6 +14,7 @@ const CourseThree = (props) => {
         'Authorization': `Token token=${props.user.token}`
       },
       data: {
+        imageUrl: 'https://ga-core.s3.amazonaws.com/production/uploads/program/default_image/9192/thumb_101_Intro_ProductManagement.jpg',
         title: 'Product Management Course: Boston',
         price: 98
       }

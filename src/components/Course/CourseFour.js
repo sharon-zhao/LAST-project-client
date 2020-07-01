@@ -14,6 +14,7 @@ const CourseTwo = (props) => {
         'Authorization': `Token token=${props.user.token}`
       },
       data: {
+        imageUrl: 'https://ga-core.s3.amazonaws.com/production/uploads/program/default_image/13832/thumb_Business_Make_Heart_Hand_Tray_Suit.jpg',
         title: 'Visual Design Course: Boston',
         price: 3888
       }
