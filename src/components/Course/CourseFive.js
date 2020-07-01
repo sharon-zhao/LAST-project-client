@@ -15,8 +15,8 @@ const CourseOne = (props) => {
       },
       data: {
         imageUrl: 'https://ga-core.s3.amazonaws.com/production/uploads/program/default_image/14058/thumb_Tech_AI-VR-woman-headset.jpg',
-        title: 'UX Design Immersive: Boston',
-        price: 200
+        title: 'What The HTML',
+        price: 666
       }
     })
       .then(res => {
